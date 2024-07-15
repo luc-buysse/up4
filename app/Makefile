@@ -52,7 +52,14 @@ local-build: _build_resources
 build: _build_resources mvn_settings
 	docker run -it --rm -v ${CURRENT_DIR}:/root -v ${MVN_CACHE}:/root/.m2 \
 		${MVN_SETTINGS_MOUNT} -w /root \
-		${MAVEN_IMAGE} bash -c "mvn ${MVN_FLAGS} clean install && chown -R ${CURRENT_UID}:${CURRENT_GID} /root"
+		${MAVEN_IMAGE} bash -c "mvn install:install-file \
+				-Dfile=onos-api-2.5.10-SNAPSHOT.jar \
+				-DgroupId=org.onosproject \
+				-DartifactId=onos-api \
+				-Dversion=2.5.10-SNAPSHOT \
+				-Dpackaging=jar \
+				&& mvn ${MVN_FLAGS} clean install \
+				&& chown -R ${CURRENT_UID}:${CURRENT_GID} /root"
 
 # ci-verify is a build profile specified in onos-dependencies's pom.xml
 # It's used to run javadoc validation and other checks that should not

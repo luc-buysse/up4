@@ -300,6 +300,8 @@ public class Up4TranslatorImpl implements Up4Translator {
             case SESSION_DOWNLINK: {
                 UpfSessionDownlink.Builder builder = UpfSessionDownlink.builder();
                 builder.withUeAddress(Up4TranslatorUtil.getFieldAddress(entry, HDR_UE_ADDRESS));
+                builder.withTimeSampling(2);
+                builder.withTimeSampling(2);
                 PiActionId actionId = ((PiAction) entry.action()).id();
                 if (actionId.equals(PRE_QOS_PIPE_SET_SESSION_DOWNLINK_DROP)) {
                     builder.needsDropping(true);

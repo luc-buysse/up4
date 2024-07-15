@@ -435,11 +435,12 @@ public class Up4NorthComponent {
         }
         PiCounterId piCounterId = null;
         int counterId = message.getCounterId();
+
         // FYI a counterId of 0 corresponds to a wildcard read of all counters
         if (counterId != 0) {
             try {
                 piCounterId = PiCounterId.of(PipeconfHelper.getP4InfoBrowser(pipeconf).counters()
-                                                     .getById(message.getCounterId())
+                                                     .getById(counterId)
                                                      .getPreamble()
                                                      .getName());
             } catch (P4InfoBrowser.NotFoundException e) {
@@ -484,6 +485,13 @@ public class Up4NorthComponent {
             }
             try {
                 readCounters.addAll(up4Service.readCounters(-1, counterType));
+            } catch (UpfProgrammableException e) {
+                throw io.grpc.Status.UNKNOWN.withDescription(e.getMessage()).asException();
+            }
+        } else if (index != null) {
+            // A single counter cell was requested for a specific counter
+            try {
+                readCounters.add(up4Service.readCounter(index, COUNTER));
             } catch (UpfProgrammableException e) {
                 throw io.grpc.Status.UNKNOWN.withDescription(e.getMessage()).asException();
             }

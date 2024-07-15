@@ -43,8 +43,8 @@
         <dependency>
             <groupId>org.onosproject</groupId>
             <artifactId>onos-api</artifactId>
-            <version>${onos.version}</version>
-            <scope>provided</scope>
+            <version>2.5.10-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
