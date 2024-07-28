@@ -13,7 +13,7 @@ MVN_CACHE ?= ${mvn_cache_docker_volume}
 # By default use the maven settings in local ~/.m2, but allow passing a custom
 # settings.
 MVN_SETTINGS ?= $(shell test -f ~/.m2/settings.xml && echo "$${HOME}/.m2/settings.xml")
-MVN_FLAGS ?= -B
+MVN_FLAGS ?= -B -DskipTests
 
 onos_tools_dir := $(abspath ${CURRENT_DIR}/../scenarios/onos/tools/package/runtime/bin)
 

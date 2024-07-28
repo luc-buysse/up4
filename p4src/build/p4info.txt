@@ -444,6 +444,16 @@ actions {
     name: "session_meter_idx"
     bitwidth: 32
   }
+  params {
+    id: 2
+    name: "time_sampling"
+    bitwidth: 3
+  }
+  params {
+    id: 3
+    name: "count_sampling"
+    bitwidth: 3
+  }
 }
 actions {
   preamble {
@@ -467,6 +477,16 @@ actions {
     id: 2
     name: "session_meter_idx"
     bitwidth: 32
+  }
+  params {
+    id: 3
+    name: "time_sampling"
+    bitwidth: 3
+  }
+  params {
+    id: 4
+    name: "count_sampling"
+    bitwidth: 3
   }
 }
 actions {

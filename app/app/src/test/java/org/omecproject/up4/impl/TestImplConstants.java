@@ -80,6 +80,8 @@ import static org.omecproject.up4.impl.Up4P4InfoConstants.PRE_QOS_PIPE_UPLINK_TE
 import static org.omecproject.up4.impl.Up4P4InfoConstants.PRE_QOS_PIPE_UPLINK_TERM_FWD;
 import static org.omecproject.up4.impl.Up4P4InfoConstants.QFI;
 import static org.omecproject.up4.impl.Up4P4InfoConstants.SESSION_METER_IDX;
+import static org.omecproject.up4.impl.Up4P4InfoConstants.TIME_SAMPLING;
+import static org.omecproject.up4.impl.Up4P4InfoConstants.COUNT_SAMPLING;
 import static org.omecproject.up4.impl.Up4P4InfoConstants.SLICE_ID;
 import static org.omecproject.up4.impl.Up4P4InfoConstants.SPORT;
 import static org.omecproject.up4.impl.Up4P4InfoConstants.SRC_ADDR;
@@ -141,6 +143,8 @@ public final class TestImplConstants {
     public static final long PIR = 50000;
     public static final long PBURST = 500;
     public static final int METER_IDX = 300;
+    public static final int TIME_SMPL = 2;
+    public static final int COUNT_SMPL = 2;
     public static final int DEFAULT_APP_METER_IDX = 0;
     public static final int DEFAULT_SESSION_METER_IDX = 0;
 
@@ -346,6 +350,8 @@ public final class TestImplConstants {
                     PiAction.builder()
                             .withId(PRE_QOS_PIPE_SET_SESSION_UPLINK)
                             .withParameter(new PiActionParam(SESSION_METER_IDX, METER_IDX))
+                            .withParameter(new PiActionParam(TIME_SAMPLING, TIME_SMPL))
+                            .withParameter(new PiActionParam(COUNT_SAMPLING, COUNT_SMPL))
                             .build()
             )
             .build();
@@ -363,6 +369,8 @@ public final class TestImplConstants {
                             .withId(PRE_QOS_PIPE_SET_SESSION_DOWNLINK)
                             .withParameter(new PiActionParam(TUNNEL_PEER_ID, GTP_TUNNEL_ID))
                             .withParameter(new PiActionParam(SESSION_METER_IDX, METER_IDX))
+                            .withParameter(new PiActionParam(TIME_SAMPLING, TIME_SMPL))
+                            .withParameter(new PiActionParam(COUNT_SAMPLING, COUNT_SMPL))
                             .build()
             )
             .build();

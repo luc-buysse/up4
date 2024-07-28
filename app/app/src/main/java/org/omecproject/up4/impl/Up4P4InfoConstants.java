@@ -178,6 +178,10 @@ public final class Up4P4InfoConstants {
     public static final PiActionParamId QFI = PiActionParamId.of("qfi");
     public static final PiActionParamId SESSION_METER_IDX =
             PiActionParamId.of("session_meter_idx");
+    public static final PiActionParamId TIME_SAMPLING =
+            PiActionParamId.of("time_sampling");
+    public static final PiActionParamId COUNT_SAMPLING =
+            PiActionParamId.of("count_sampling");
     public static final PiActionParamId SLICE_ID =
             PiActionParamId.of("slice_id");
     public static final PiActionParamId SPORT = PiActionParamId.of("sport");

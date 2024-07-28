@@ -129,4 +129,6 @@ enum bit<2> MeterColor {
     RED = V1MODEL_METER_COLOR_RED
 }
 
+typedef bit<3> Sampling_t;
+
 #endif

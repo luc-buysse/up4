@@ -87,6 +87,8 @@ import static org.omecproject.up4.impl.Up4P4InfoConstants.PRE_QOS_PIPE_UPLINK_TE
 import static org.omecproject.up4.impl.Up4P4InfoConstants.PRE_QOS_PIPE_UPLINK_TERM_FWD;
 import static org.omecproject.up4.impl.Up4P4InfoConstants.QFI;
 import static org.omecproject.up4.impl.Up4P4InfoConstants.SESSION_METER_IDX;
+import static org.omecproject.up4.impl.Up4P4InfoConstants.TIME_SAMPLING;
+import static org.omecproject.up4.impl.Up4P4InfoConstants.COUNT_SAMPLING;
 import static org.omecproject.up4.impl.Up4P4InfoConstants.SLICE_ID;
 import static org.omecproject.up4.impl.Up4P4InfoConstants.SPORT;
 import static org.omecproject.up4.impl.Up4P4InfoConstants.SRC_ADDR;
@@ -294,6 +296,8 @@ public class Up4TranslatorImpl implements Up4Translator {
                 } else {
                     // TODO: should I verify SESSION_METER_IDX is in parameters?
                     builder.withSessionMeterIdx(Up4TranslatorUtil.getParamShort(entry, SESSION_METER_IDX));
+                    builder.withTimeSampling(Up4TranslatorUtil.getParamByte(entry, TIME_SAMPLING));
+                    builder.withCountSampling(Up4TranslatorUtil.getParamByte(entry, COUNT_SAMPLING));
                 }
                 return builder.build();
             }
@@ -312,6 +316,8 @@ public class Up4TranslatorImpl implements Up4Translator {
                         builder.needsBuffering(true);
                     } else {
                         builder.withGtpTunnelPeerId(Up4TranslatorUtil.getParamByte(entry, TUNNEL_PEER_ID));
+                        builder.withTimeSampling(Up4TranslatorUtil.getParamByte(entry, TIME_SAMPLING));
+                        builder.withCountSampling(Up4TranslatorUtil.getParamByte(entry, COUNT_SAMPLING));
                     }
                 }
                 return builder.build();

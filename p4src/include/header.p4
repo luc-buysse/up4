@@ -175,6 +175,9 @@ struct local_metadata_t {
     MeterColor app_color;
     MeterColor slice_tc_color;
 
+    Sampling_t time_sampling;
+    Sampling_t count_sampling;
+
     @field_list(0)
     PortId_t preserved_ingress_port;
 }

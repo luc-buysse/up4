@@ -885,7 +885,11 @@ public class Up4DeviceManager extends AbstractListenerManager<Up4Event, Up4Event
                 .setEgress(0, 0)
                 .build();
         for (UpfProgrammable upfProg : upfProgrammables.values()) {
-            counterStats = counterStats.sum(upfProg.readCounter(counterIdx, type));
+            try {
+                counterStats = counterStats.sum(upfProg.readCounter(counterIdx, type));
+            } catch (IllegalArgumentException e) {
+                continue;
+            }
         }
         return counterStats;
     }

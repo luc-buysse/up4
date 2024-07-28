@@ -69,7 +69,7 @@ final class Up4TranslatorUtil {
             }
         }
         throw new Up4TranslatorImpl.Up4TranslationException(
-                String.format("Unable to find parameter %s where expected!", paramId.toString()));
+                String.format("Unable to find parameter %s for action %s", paramId.toString(), action.id()));
     }
 
     static ImmutableByteSequence getParamValue(PiTableEntry entry, PiActionParamId paramId)

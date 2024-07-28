@@ -196,18 +196,23 @@ control PreQosPipe (inout parsed_headers_t    hdr,
         exit;
     }
 
-    action set_session_uplink(session_meter_idx_t session_meter_idx) {
+    action set_session_uplink(session_meter_idx_t session_meter_idx, Sampling_t time_sampling, Sampling_t count_sampling) {
         local_meta.needs_gtpu_decap = true;
         local_meta.session_meter_idx_internal = session_meter_idx;
+        local_meta.time_sampling = time_sampling;
+        local_meta.count_sampling = count_sampling;
     }
 
     action set_session_uplink_drop() {
         local_meta.needs_dropping = true;
     }
 
-    action set_session_downlink(tunnel_peer_id_t tunnel_peer_id, session_meter_idx_t session_meter_idx) {
+    action set_session_downlink(tunnel_peer_id_t tunnel_peer_id, session_meter_idx_t session_meter_idx,
+        Sampling_t time_sampling, Sampling_t count_sampling) {
         local_meta.tunnel_peer_id = tunnel_peer_id;
         local_meta.session_meter_idx_internal = session_meter_idx;
+        local_meta.time_sampling = time_sampling;
+        local_meta.count_sampling = count_sampling;
     }
     action set_session_downlink_drop() {
         local_meta.needs_dropping = true;
